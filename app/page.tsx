@@ -12,14 +12,17 @@ export default function Home() {
     setResposta(null);
 
     const form = e.target as HTMLFormElement;
+
     const data = {
-      empresa: form.empresa.value,
-      produto: form.produto.value,
       publico: form.publico.value,
+      objetivo: form.objetivo.value,
     };
 
-    const r = await fetch("/api/gerar-email", {
+    const r = await fetch("/api/send-email", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(data),
     });
 
@@ -37,44 +40,34 @@ export default function Home() {
         </h1>
 
         <p className="text-gray-600 mb-6">
-          Gere emails de prospecção prontos para enviar em segundos.
+          Gere emails profissionais prontos para enviar em segundos.
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-4">
 
           <div>
             <label className="block mb-1 text-sm font-medium text-gray-700">
-              Nome da empresa
+              Para quem é o email?
             </label>
             <input
-                name="empresa"
-                className="w-full p-3 rounded-lg border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required
-                placeholder="Ex: Loja XPTO"
-              />
-          </div>
-
-          <div>
-            <label className="block mb-1 text-sm font-medium text-gray-700">
-              Seu produto ou serviço
-            </label>
-            <input
-              name="produto"
-              className="w-full p-3 rounded-lg border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              name="publico"
+              className="w-full p-3 rounded-lg border border-gray-300 text-gray-900 placeholder-gray-400 
+              focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
-              placeholder="Ex: Automação de vendas"
+              placeholder="Ex: donos de pequenos negócios, dentistas..."
             />
           </div>
 
           <div>
             <label className="block mb-1 text-sm font-medium text-gray-700">
-              Público-alvo do cliente
+              Objetivo do email
             </label>
             <input
-              name="publico"
-              className="w-full p-3 rounded-lg border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              name="objetivo"
+              className="w-full p-3 rounded-lg border border-gray-300 text-gray-900 placeholder-gray-400 
+              focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
-              placeholder="Ex: Pequenas empresas"
+              placeholder="Ex: oferecer meu software, mandar um link..."
             />
           </div>
 
