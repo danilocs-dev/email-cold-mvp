@@ -1,126 +1,53 @@
 "use client";
 
-import { useState } from "react";
+import Link from "next/link";
 
-export default function Home() {
-  const [loading, setLoading] = useState(false);
-  const [resposta, setResposta] = useState<string | null>(null);
-  const [copied, setCopied] = useState(false);
-
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setLoading(true);
-    setResposta(null);
-    setCopied(false);
-
-    const form = e.target as HTMLFormElement;
-    const data = {
-      publico: form.publico.value,
-      objetivo: form.objetivo.value,
-      detalhes: form.detalhes.value,
-      tamanho: form.tamanho.value,
-    };
-
-    const r = await fetch("/api/send-email", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
-
-    const json = await r.json();
-    setResposta(json.email);
-    setLoading(false);
-  }
-
-  function handleCopy() {
-    if (!resposta) return;
-    navigator.clipboard.writeText(resposta);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000); // feedback some depois de 2s
-  }
-
+export default function Landing() {
   return (
-    <main className="min-h-screen flex items-center justify-center p-6 bg-gray-100">
-      <div className="bg-white max-w-md w-full rounded-xl shadow-lg p-8 border border-gray-200">
-        <h1 className="text-2xl font-bold mb-4 text-gray-900">EmailBot</h1>
-        <p className="text-gray-600 mb-6">
-          Gere emails profissionais prontos para enviar em segundos.
-        </p>
+    <main className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
+      <div className="max-w-3xl w-full bg-white shadow-xl rounded-2xl p-10 border border-gray-200">
+        
+        {/* Hero */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4 leading-tight">
+            Gere cold emails profissionais em segundos
+          </h1>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Uma ferramenta simples que cria emails naturais, humanos e prontos para enviar — sem enrolação, sem copiar templates prontos.
+          </p>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block mb-1 text-sm font-medium text-gray-700">
-              Para quem é o email?
-            </label>
-            <input
-              name="publico"
-              className="w-full p-3 rounded-lg border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-              placeholder="Ex: donos de pequenos negócios, dentistas..."
-            />
-          </div>
-
-          <div>
-            <label className="block mb-1 text-sm font-medium text-gray-700">
-              Objetivo do email
-            </label>
-            <input
-              name="objetivo"
-              className="w-full p-3 rounded-lg border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-              placeholder="Ex: oferecer meu software, mandar um link..."
-            />
-          </div>
-
-          <div>
-            <label className="block mb-1 text-sm font-medium text-gray-700">
-              Detalhes do negócio
-            </label>
-            <input
-              name="detalhes"
-              className="w-full p-3 rounded-lg border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-              placeholder="Ex: empresa que faz MVPs de IA"
-            />
-          </div>
-
-          <div className="mb-20">
-            <label className="block mb-1 text-sm font-medium text-gray-700">
-              Tamanho do email
-            </label>
-            <select
-              name="tamanho"
-              className="w-full p-3 rounded-lg border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              defaultValue="curto"
-            >
-              <option value="curto">Curto (45–70 palavras)</option>
-              <option value="longo">Longo (80–120 palavras)</option>
-            </select>
-          </div>
-
-
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full py-3 bg-blue-600 hover:bg-blue-700 transition text-white rounded-lg font-medium"
+          <Link
+            href="/generator"
+            className="inline-block mt-8 px-10 py-4 bg-blue-600 hover:bg-blue-700 text-white text-lg rounded-xl font-medium transition"
           >
-            {loading ? "Gerando..." : "Gerar Email"}
-          </button>
-        </form>
+            Começar agora
+          </Link>
+        </div>
 
-        {resposta && (
-          <div className="mt-6 p-4 bg-gray-50 rounded-lg border text-gray-800 whitespace-pre-line">
-            <h2 className="font-bold mb-2 text-gray-900">Email gerado:</h2>
-            <div className="mb-2">{resposta}</div>
-            <button
-              onClick={handleCopy}
-              className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium"
-            >
-              {copied ? "Copiado!" : "Copiar"}
-            </button>
+        {/* Benefits */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-10">
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 text-center">
+            <h3 className="font-semibold text-gray-900 mb-1">Rápido</h3>
+            <p className="text-sm text-gray-600">Gere um email pronto em menos de 5 segundos.</p>
           </div>
-        )}
+
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 text-center">
+            <h3 className="font-semibold text-gray-900 mb-1">Profissional</h3>
+            <p className="text-sm text-gray-600">Texto humano, direto e sem parecer robótico.</p>
+          </div>
+
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 text-center">
+            <h3 className="font-semibold text-gray-900 mb-1">Personalizado</h3>
+            <p className="text-sm text-gray-600">Email baseado exatamente no objetivo e público que você enviar.</p>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <p className="text-center text-gray-400 text-sm mt-12">
+          Projeto experimental — mais ferramentas em breve.
+        </p>
       </div>
     </main>
   );
 }
+    

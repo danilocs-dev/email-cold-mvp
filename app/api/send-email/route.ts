@@ -38,7 +38,7 @@ ${instrucoesTamanho}
 Informações fornecidas:
 - Público: ${publico}
 - Objetivo: ${objetivo}
-- Detalhes do negócio: ${detalhes}
+- Detalhes sobre o negócio do destinatário (em terceira pessoa): ${detalhes}
 
 Gere um cold email seguindo estritamente esse padrão e usando apenas as informações fornecidas.
 `;
