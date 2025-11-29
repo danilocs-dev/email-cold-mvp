@@ -28,8 +28,10 @@ Use este padrão:
 2. Faça uma observação sobre o público de forma genérica, **sem inventar nada sobre eles**.
 3. Apresente a sua proposta **como novidade para o público**, mostrando o que você oferece. Não diga que eles já têm algo.
 4. Termine com um convite leve para conhecer ou testar.
-5. O email deve ser humano, natural, sem jargões, sem listas e sem promessas exageradas.
+5. O email deve ser humano, natural, sem jargões e sem promessas exageradas.
 6. Não use placeholders como [nome], [bairro], [cidade], nem dados fictícios.
+7. Não adicione serviços, funcionalidades ou ofertas que NÃO estejam explicitamente descritas no objetivo OU nos detalhes. Se a informação não estiver exatamente nos campos enviados, não invente, não expanda e não adicione nada.
+
 
 ${instrucoesTamanho}
 

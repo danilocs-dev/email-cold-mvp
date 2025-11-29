@@ -18,6 +18,7 @@ export default function Home() {
       publico: form.publico.value,
       objetivo: form.objetivo.value,
       detalhes: form.detalhes.value,
+      tamanho: form.tamanho.value,
     };
 
     const r = await fetch("/api/send-email", {
@@ -83,7 +84,7 @@ export default function Home() {
             />
           </div>
 
-          <div>
+          <div className="mb-20">
             <label className="block mb-1 text-sm font-medium text-gray-700">
               Tamanho do email
             </label>
