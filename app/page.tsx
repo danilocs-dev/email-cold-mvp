@@ -10,44 +10,45 @@ export default function Landing() {
         {/* Hero */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4 leading-tight">
-            Gere cold emails profissionais em segundos
+            Generate professional cold emails in seconds
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Uma ferramenta simples que cria emails naturais, humanos e prontos para enviar — sem enrolação, sem copiar templates prontos.
+            A simple tool that creates natural, human-sounding emails ready to send — no fluff, no generic templates.
           </p>
 
           <Link
             href="/generator"
             className="inline-block mt-8 px-10 py-4 bg-blue-600 hover:bg-blue-700 text-white text-lg rounded-xl font-medium transition"
           >
-            Começar agora
+            Start now
           </Link>
         </div>
 
         {/* Benefits */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-10">
           <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 text-center">
-            <h3 className="font-semibold text-gray-900 mb-1">Rápido</h3>
-            <p className="text-sm text-gray-600">Gere um email pronto em menos de 5 segundos.</p>
+            <h3 className="font-semibold text-gray-900 mb-1">Fast</h3>
+            <p className="text-sm text-gray-600">Generate a ready-to-send email in under 5 seconds.</p>
           </div>
 
           <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 text-center">
-            <h3 className="font-semibold text-gray-900 mb-1">Profissional</h3>
-            <p className="text-sm text-gray-600">Texto humano, direto e sem parecer robótico.</p>
+            <h3 className="font-semibold text-gray-900 mb-1">Professional</h3>
+            <p className="text-sm text-gray-600">Human tone, direct, and never robotic.</p>
           </div>
 
           <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 text-center">
-            <h3 className="font-semibold text-gray-900 mb-1">Personalizado</h3>
-            <p className="text-sm text-gray-600">Email baseado exatamente no objetivo e público que você enviar.</p>
+            <h3 className="font-semibold text-gray-900 mb-1">Personalized</h3>
+            <p className="text-sm text-gray-600">
+              Emails based exactly on the goal and audience you provide.
+            </p>
           </div>
         </div>
 
         {/* Footer */}
         <p className="text-center text-gray-400 text-sm mt-12">
-          Projeto experimental — mais ferramentas em breve.
+          Experimental project — more tools coming soon.
         </p>
       </div>
     </main>
   );
 }
-    

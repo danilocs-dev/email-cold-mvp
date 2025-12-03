@@ -36,7 +36,7 @@ export default function Home() {
     if (!resposta) return;
     navigator.clipboard.writeText(resposta);
     setCopied(true);
-    setTimeout(() => setCopied(false), 2000); // feedback some depois de 2s
+    setTimeout(() => setCopied(false), 2000);
   }
 
   return (
@@ -44,79 +44,78 @@ export default function Home() {
       <div className="bg-white max-w-md w-full rounded-xl shadow-lg p-8 border border-gray-200">
         <h1 className="text-2xl font-bold mb-4 text-gray-900">EmailBot</h1>
         <p className="text-gray-600 mb-6">
-          Gere emails profissionais prontos para enviar em segundos.
+          Generate professional emails ready to send — in seconds.
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block mb-1 text-sm font-medium text-gray-700">
-              Para quem é o email?
+              Who is the email for?
             </label>
             <input
               name="publico"
               className="w-full p-3 rounded-lg border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
-              placeholder="Ex: donos de pequenos negócios, dentistas..."
+              placeholder="Ex: small business owners, dentists..."
             />
           </div>
 
           <div>
             <label className="block mb-1 text-sm font-medium text-gray-700">
-              Objetivo do email
+              What is the goal of the email?
             </label>
             <input
               name="objetivo"
               className="w-full p-3 rounded-lg border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
-              placeholder="Ex: oferecer meu software, mandar um link..."
+              placeholder="Ex: offer my software, share a link..."
             />
           </div>
 
           <div>
             <label className="block mb-1 text-sm font-medium text-gray-700">
-              Detalhes do negócio (tipo de empresa para quem o email será enviado)
+              Business details (type of company receiving the email)
             </label>
             <input
               name="detalhes"
               className="w-full p-3 rounded-lg border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
-              placeholder="Ex: empresa que faz MVPs de IA"
+              placeholder="Ex: AI MVP development company"
             />
           </div>
 
           <div className="mb-20">
             <label className="block mb-1 text-sm font-medium text-gray-700">
-              Tamanho do email
+              Email length
             </label>
             <select
               name="tamanho"
               className="w-full p-3 rounded-lg border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
               defaultValue="curto"
             >
-              <option value="curto">Curto (45–70 palavras)</option>
-              <option value="longo">Longo (80–120 palavras)</option>
+              <option value="curto">Short (45–70 words)</option>
+              <option value="longo">Long (80–120 words)</option>
             </select>
           </div>
-
 
           <button
             type="submit"
             disabled={loading}
             className="w-full py-3 bg-blue-600 hover:bg-blue-700 transition text-white rounded-lg font-medium"
           >
-            {loading ? "Gerando..." : "Gerar Email"}
+            {loading ? "Generating..." : "Generate Email"}
           </button>
         </form>
 
         {resposta && (
           <div className="mt-6 p-4 bg-gray-50 rounded-lg border text-gray-800 whitespace-pre-line">
-            <h2 className="font-bold mb-2 text-gray-900">Email gerado:</h2>
+            <h2 className="font-bold mb-2 text-gray-900">Generated email:</h2>
             <div className="mb-2">{resposta}</div>
             <button
               onClick={handleCopy}
               className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium"
             >
-              {copied ? "Copiado!" : "Copiar"}
+              {copied ? "Copied!" : "Copy"}
             </button>
           </div>
         )}
